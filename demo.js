@@ -1,7 +1,8 @@
 //let's make some objects...  I haven't eaten yet so food it is!
 
 //Prototypal -  The properties are located on the prototype of the object.
-var BLT = {
+//NOTE: Use caution when doing prototypal inheritance.  Don't accidentally update the prototype.
+BLT = {
     components:['bacon','lettuce','tomato','toast'],
     taste:'delicious',
     expire : function(){
@@ -13,6 +14,10 @@ MyBLT = Object.create(BLT);
 OldBLT = Object.create(BLT);
 OldBLT.expire();
 YourBLT = Object.create(BLT);
+
+//uncomment lines below and see how all objects are affected.
+//MyBLT['components'].push('Mayo');
+//YourBLT.components.push('Ranch');
 
 console.log(MyBLT);
 console.log(OldBLT);
@@ -47,3 +52,15 @@ YourSundae = {
 
 console.log(MySundae);
 console.log(YourSundae);
+
+//Let's go a little deeper.. Passing a properties object.
+PBJ = {
+    components:['Toast','Peanut Butter','Jelly'],
+    taste:'awesome'
+}
+
+MyPBJ = Object.create(PBJ,{crustless:{value:true}});
+YourPBJ = Object.create(PBJ, {crustless:{value:false}});
+
+console.log(MyPBJ);
+console.log(YourPBJ);
