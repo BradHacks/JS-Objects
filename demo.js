@@ -1,16 +1,21 @@
 //let's make some objects...  I haven't eaten yet so food it is!
 
 //Prototypal -  The properties are located on the prototype of the object.
-//NOTE: If you try to modify the properties all objects inheriting will be affected.
 var BLT = {
     components:['bacon','lettuce','tomato','toast'],
-    taste:'delicious'
+    taste:'delicious',
+    expire : function(){
+        this.taste = 'gross';
+    }
 };
 
 MyBLT = Object.create(BLT);
+OldBLT = Object.create(BLT);
+OldBLT.expire();
 YourBLT = Object.create(BLT);
 
 console.log(MyBLT);
+console.log(OldBLT);
 console.log(YourBLT);
 
 //Object constructor/factory - The properties are located on the object itself.
